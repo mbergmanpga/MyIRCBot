@@ -49,4 +49,6 @@ class User
 
 		return $damage;
 	}
+
+
 }

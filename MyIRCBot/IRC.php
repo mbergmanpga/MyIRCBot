@@ -13,6 +13,15 @@ class IRC
 	 */
 	private $_users;
 
+	/**
+	 * @description
+	 * @author michael.bergman@telesphere.com
+	 * ---------------------------------
+	 *
+	 * @param $config
+	 */
+	private $_actions;
+
 	public function setConfig($config)
 	{
 		$this->_config = $config;
@@ -22,19 +31,27 @@ class IRC
 	{
 		$bot = new Philip($this->_config);
 
-		$bot->onMessages('/\!$\([\'`"]#(.*)[\'`"]\)\.(.*)\(\);/', function ($event)
+		$bot->onMessages('/\!\$\([\'`"]#(.*)[\'`"]\)\.(.*)\(\);/', function ($event)
 		{
 			$matches = $event->getMatches();
 			$username = $matches[0];
+			$action = $matches[1];
 
 			if(!isset($this->_users[$username]))
 			{
 				$this->_users[$username] = new User();
 			}
 
-			$msg = $this->doDamage($this->_users[$username], Actions::PUNCHED);
+			if(!isset($this->_actions[$action]))
+			{
+				$msg = "Sorry, {$this->_usersobs[$username]} I did not compute that last request";
+			}
+			else
+			{
+				$msg = $this->doDamage($this->_users[$username], Actions::PUNCHED);
+			}
 
-			$this->muliLineMsg($event, $msg);
+			$this->multiLineMsg($event, $msg);
 		});
 
 		$this->help($bot);
