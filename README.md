@@ -3,6 +3,7 @@
 To Run & Install:
 
 composer install
+
 php start.php
 
 Logs:
