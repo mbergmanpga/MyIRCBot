@@ -7,15 +7,22 @@ class User
 	private $username;
 	private $hp;
 	private $level;
+	private $strength;
 
 	public function __construct()
 	{
 		$this->hp = 40;
+		$this->strength = rand(0, 40);
 	}
 
 	public function getUsername()
 	{
 		return $this->username;
+	}
+
+	public function getStrength()
+	{
+		return $this->strength;
 	}
 
 	public function getHP()

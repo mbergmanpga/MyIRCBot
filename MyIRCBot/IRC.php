@@ -59,7 +59,7 @@ class IRC
 
 	public function help($bot)
 	{
-		$bot->onMessages('/jQueryBot help/i', function($event) {
+		$bot->onMessages('/jQuery help/i', function($event) {
 			$msg = "Available Commands:" .
 			       "\n-------------------" .
 			       "\n$('#username').punch();";
