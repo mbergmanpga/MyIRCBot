@@ -1,0 +1,10 @@
+{
+	"require": {
+		"epochblue/philip": "1.0.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"MyIRCBot\\": "MyIRCBot/"
+		}
+	}
+}

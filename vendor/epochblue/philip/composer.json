@@ -1,0 +1,33 @@
+{
+    "name": "epochblue/philip",
+    "description": "A Slim-inspired IRC bot framework",
+    "keywords": ["irc", "bot", "dsl"],
+    "homepage": "https://github.com/epochblue/philip",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bill Israel",
+            "email": "bill.israel@gmail.com",
+            "homepage": "http://billisrael.info/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "monolog/monolog": "1.7.*",
+        "symfony/event-dispatcher": "2.1.*"
+    },
+    "require-dev": {
+        "atoum/atoum": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Philip": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
+    }
+}
