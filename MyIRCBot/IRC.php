@@ -22,11 +22,12 @@ class IRC
 	{
 		$bot = new Philip($this->_config);
 
-		$bot->onMessages('/\$\([\'`"]#(.*)[\'`"]\)\.(.*)\(\);/', function($event) {
+		$bot->onMessages('/\!$\([\'`"]#(.*)[\'`"]\)\.(.*)\(\);/', function ($event)
+		{
 			$matches = $event->getMatches();
 			$username = $matches[0];
 
-			if (!isset($this->_users[$username]))
+			if(!isset($this->_users[$username]))
 			{
 				$this->_users[$username] = new User();
 			}
@@ -44,8 +45,8 @@ class IRC
 	public function doDamage(User &$user, $action)
 	{
 		$username = $user->getUsername();
-		$initHP =  $user->getHP();
-		$damage = $user->doDamage(rand(0,40));
+		$initHP = $user->getHP();
+		$damage = $user->doDamage(rand(0, 40));
 		$newHP = $user->getHP();
 
 		$msg = "========================";
@@ -59,26 +60,27 @@ class IRC
 
 	public function help($bot)
 	{
-		$bot->onMessages('/jQuery help/i', function($event) {
+		$bot->onMessages('/MrRobot help/i', function ($event)
+		{
 			$msg = "Available Commands:" .
 			       "\n-------------------" .
 			       "\n$('#username').punch();";
 
-			$this->muliLineMsg($event, $msg);
+			$this->multiLineMsg($event, $msg);
 		});
 	}
 
-	public function muliLineMsg($event, $msg)
+	public function multiLineMsg($event, $msg)
 	{
 		$messages = explode("\n", $msg);
 
 		foreach($messages as $message)
 		{
 			$event->addResponse(Response::msg(
-				$event->getRequest()->getSource(),
+				$event->getRequest()
+				      ->getSource(),
 				$message
 			));
 		}
 	}
-
 }
